@@ -3,7 +3,7 @@ Description=Event Manager Backend Service
 
 [Service]
 ExecStart=/usr/bin/python3 app.py
-WorkingDirectory=/ds_storage/ChurchTvControl/backend
+WorkingDirectory=/home/user/welcome-center-tv/backend
 Restart=always
 
 [Install]

@@ -3,7 +3,7 @@ Description=Event Manager Frontend Service
 
 [Service]
 ExecStart=npx serve -s build -l 80
-WorkingDirectory=/ds_storage/ChurchTvControl/frontend
+WorkingDirectory=/home/user/welcome-center-tv/frontend
 Restart=always
 Environment=PATH=/usr/bin
 
