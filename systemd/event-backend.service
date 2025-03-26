@@ -1,0 +1,10 @@
+[Unit]
+Description=Event Manager Backend Service
+
+[Service]
+ExecStart=/usr/bin/python3 app.py
+WorkingDirectory=/ds_storage/ChurchTvControl/backend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

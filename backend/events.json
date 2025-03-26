@@ -1,0 +1,27 @@
+[
+    {
+        "day": "Sunday",
+        "state": "On",
+        "time": "08:00"
+    },
+    {
+        "day": "Sunday",
+        "state": "Off",
+        "time": "12:30"
+    },
+    {
+        "day": "Wednesday",
+        "state": "On",
+        "time": "14:30"
+    },
+    {
+        "day": "Wednesday",
+        "state": "Off",
+        "time": "19:00"
+    },
+    {
+        "day": "Sunday",
+        "state": "On",
+        "time": "13:35"
+    }
+]
