@@ -22,10 +22,12 @@ def save_events(events):
 
 def execute_event(event):
     print(f"Executing event: {event}")
-    commands = {'On': 'on', 'Off': 'standby'}
     tv_id = '0'
     # execute "echo {commands[event['action']]} {tv_id}" as a system process
-    os.system(f"echo {commands[event['state']]} {tv_id} | cec-client -s -d 1")
+    if event["action"] == "on":
+        os.system(f"./kiosk.sh {event['url']}")
+        time.sleep(5)
+    os.system(f"echo {event['action']} {tv_id} | cec-client -s -d 1")
 
 
 def schedule_events():
@@ -33,8 +35,10 @@ def schedule_events():
     events = load_events()
     for event in events:
         day = event["day"]
-        time_str = event["time"]
-        getattr(schedule.every(), day.lower()).at(time_str).do(execute_event, event)
+        on_event = {"action": "on", "url": event["url"]}
+        off_event = {"action": "standby"}
+        getattr(schedule.every(), day.lower()).at(event["on_time"]).do(execute_event, on_event)
+        getattr(schedule.every(), day.lower()).at(event["off_time"]).do(execute_event, off_event)
 
     while True:
         schedule.run_pending()
