@@ -1,14 +1,14 @@
 [
     {
         "day": "Sunday",
-        "url": "https://docs.google.com/presentation/d/e/2PACX-1vRcmBMI-H6DG_xXGhZ-I13ASseh2uK313rjDUHuvD3kyxsVkUdTR9ZPamQKprVnXsyrTjgQL1CzT-p5/pub?start=true&loop=true&delayms=30000",
+        "off_time": "12:30",
         "on_time": "08:00",
-        "off_time": "12:30"
+        "url": "https://docs.google.com/presentation/d/e/2PACX-1vRcmBMI-H6DG_xXGhZ-I13ASseh2uK313rjDUHuvD3kyxsVkUdTR9ZPamQKprVnXsyrTjgQL1CzT-p5/pub?start=true&loop=true&delayms=30000"
     },
     {
         "day": "Wednesday",
-        "url": "https://docs.google.com/presentation/d/e/2PACX-1vRcmBMI-H6DG_xXGhZ-I13ASseh2uK313rjDUHuvD3kyxsVkUdTR9ZPamQKprVnXsyrTjgQL1CzT-p5/pub?start=true&loop=true&delayms=30000",
+        "off_time": "19:00",
         "on_time": "14:30",
-        "off_time": "19:00"
+        "url": "https://docs.google.com/presentation/d/e/2PACX-1vRcmBMI-H6DG_xXGhZ-I13ASseh2uK313rjDUHuvD3kyxsVkUdTR9ZPamQKprVnXsyrTjgQL1CzT-p5/pub?start=true&loop=true&delayms=30000"
     }
 ]

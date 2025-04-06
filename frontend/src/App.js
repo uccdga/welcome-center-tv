@@ -57,37 +57,44 @@ function App() {
 
             <div className="event-list">
                 {events.map((event, index) => (
+
                     <div key={index} className="event">
-                        <button className="delete-button" onClick={() => deleteEvent(index)}>
-                            <FaTrash/>
-                        </button>
+                        <div className="first-row">
 
-                        <label>
-                            Day:
-                            <select value={event.day} onChange={(e) => updateEvent(index, "day", e.target.value)}>
-                                {daysOfWeek.map((day) => (
-                                    <option key={day} value={day}>{day}</option>
-                                ))}
-                            </select>
-                        </label>
+                            <label>
+                                Day:
+                            </label>
 
-                        <label>
-                            On Time:
+                                <select value={event.day} onChange={(e) => updateEvent(index, "day", e.target.value)}>
+                                    {daysOfWeek.map((day) => (
+                                        <option key={day} value={day}>{day}</option>
+                                    ))}
+                                </select>
+
+                            <label>
+                                On Time:
+                            </label>
                             <input
                                 type="time"
                                 value={event.on_time}
                                 onChange={(e) => updateEvent(index, "on_time", e.target.value)}
                             />
-                        </label>
 
-                        <label>
-                            Off Time:
+                            <label>
+                                Off Time:
+                            </label>
+
                             <input
                                 type="time"
                                 value={event.off_time}
                                 onChange={(e) => updateEvent(index, "off_time", e.target.value)}
                             />
-                        </label>
+                            <button className="delete-button" onClick={() => deleteEvent(index)}>
+                                <FaTrash/>
+                            </button>
+
+
+                        </div>
                         <div className="url-row">
                             <label>URL: </label>
                             <input
@@ -102,7 +109,8 @@ function App() {
                 ))}
             </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default App;
