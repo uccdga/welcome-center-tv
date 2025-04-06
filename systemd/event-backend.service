@@ -3,8 +3,9 @@ Description=Event Manager Backend Service
 
 [Service]
 ExecStart=/usr/bin/python3 app.py
-WorkingDirectory=/home/user/welcome-center-tv/backend
+WorkingDirectory=/home/uccdga/welcome-center-tv/backend
 Restart=always
+User=uccdga
 
 [Install]
 WantedBy=multi-user.target
