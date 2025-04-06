@@ -11,7 +11,7 @@ function App() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        fetch("http://192.168.0.204:5000/events")
+        fetch("http://10.69.5.111:5000/events")
             .then((res) => res.json())
             .then((data) => setEvents(data));
     }, []);
@@ -28,7 +28,7 @@ function App() {
 
     const publishChanges = () => {
         setLoading(true)
-        fetch("http://192.168.0.204:5000/events", {
+        fetch("http://10.69.5.111:5000/events", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(events),
