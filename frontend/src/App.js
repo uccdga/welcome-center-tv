@@ -11,7 +11,7 @@ function App() {
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/events")
+        fetch("http://192.168.0.204:5000/events")
             .then((res) => res.json())
             .then((data) => setEvents(data));
     }, []);
@@ -28,7 +28,7 @@ function App() {
 
     const publishChanges = () => {
         setLoading(true)
-        fetch("http://localhost:5000/events", {
+        fetch("http://192.168.0.204:5000/events", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(events),
@@ -92,6 +92,7 @@ function App() {
                             <button className="delete-button" onClick={() => deleteEvent(index)}>
                                 <FaTrash/>
                             </button>
+
 
 
                         </div>
