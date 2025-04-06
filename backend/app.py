@@ -26,6 +26,9 @@ def execute_event(event):
     # execute "echo {commands[event['action']]} {tv_id}" as a system process
     if event["action"] == "on":
         os.system(f"./kiosk.sh {event['url']}")
+        # save the URL to a file
+        with open("current_url.txt", "w") as file:
+            file.write(event["url"])
         time.sleep(5)
     os.system(f"echo {event['action']} {tv_id} | cec-client -s -d 1")
 
@@ -64,5 +67,13 @@ def update_events():
     return jsonify({"status": "success"})
 
 if __name__ == "__main__":
+    # read the prior URL from the file
+    if os.path.exists("current_url.txt"):
+        with open("current_url.txt", "r") as file:
+            current_url = file.read().strip()
+            os.system(f"./kiosk.sh {current_url}")
+        print(f"Current URL: {current_url}")
+    else:
+        print("No current URL found.")
     threading.Thread(target=schedule_events, daemon=True, name='scheduler').start()
     app.run(host="0.0.0.0", port=5000)
