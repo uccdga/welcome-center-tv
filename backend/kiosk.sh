@@ -2,6 +2,7 @@
 DISPLAY=":0"
 export DISPLAY=":0"
 USER=uccdga
+echo "$1"
 
 xset s noblank
 xset s off

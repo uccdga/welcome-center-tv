@@ -1,3 +1,5 @@
+import urllib.parse
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
@@ -25,10 +27,14 @@ def execute_event(event):
     tv_id = '0'
     # execute "echo {commands[event['action']]} {tv_id}" as a system process
     if event["action"] == "on":
-        os.system(f"./kiosk.sh {event['url']}")
         # save the URL to a file
         with open("current_url.txt", "w") as file:
             file.write(event["url"])
+
+        encoded_url = urllib.parse.quote(event['url'])
+        print(f"Current URL: {encoded_url}")
+        os.system(f"./kiosk.sh {encoded_url} &")
+
         time.sleep(5)
     os.system(f"echo {event['action']} {tv_id} | cec-client -s -d 1")
 
@@ -71,8 +77,9 @@ if __name__ == "__main__":
     if os.path.exists("current_url.txt"):
         with open("current_url.txt", "r") as file:
             current_url = file.read().strip()
-            print(f"Current URL: {current_url}")
-            os.system(f"./kiosk.sh {current_url} &")
+            encoded_url = urllib.parse.quote(current_url)
+            print(f"Current URL: {encoded_url}")
+            os.system(f"./kiosk.sh {encoded_url} &")
     else:
         print("No current URL found.")
     threading.Thread(target=schedule_events, daemon=True, name='scheduler').start()
