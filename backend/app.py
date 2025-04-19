@@ -71,8 +71,8 @@ if __name__ == "__main__":
     if os.path.exists("current_url.txt"):
         with open("current_url.txt", "r") as file:
             current_url = file.read().strip()
-            os.system(f"./kiosk.sh {current_url}")
-        print(f"Current URL: {current_url}")
+            print(f"Current URL: {current_url}")
+            os.system(f"./kiosk.sh {current_url} &")
     else:
         print("No current URL found.")
     threading.Thread(target=schedule_events, daemon=True, name='scheduler').start()
