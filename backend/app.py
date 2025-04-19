@@ -25,7 +25,7 @@ def execute_event(event):
     tv_id = '0'
     # execute "echo {commands[event['action']]} {tv_id}" as a system process
     if event["action"] == "on":
-        os.system(f"./kiosk.sh {event['url']}")
+        os.system(f"./kiosk.sh \"{event['url']}\"")
         # save the URL to a file
         with open("current_url.txt", "w") as file:
             file.write(event["url"])
@@ -72,7 +72,7 @@ if __name__ == "__main__":
         with open("current_url.txt", "r") as file:
             current_url = file.read().strip()
             print(f"Current URL: {current_url}")
-            os.system(f"./kiosk.sh {current_url} &")
+            os.system(f"./kiosk.sh \"{current_url}\"")
     else:
         print("No current URL found.")
     threading.Thread(target=schedule_events, daemon=True, name='scheduler').start()
